@@ -1,5 +1,6 @@
 <script setup>
 import InvoiceTable from "@/components/invoice/Table.vue";
+import Footer from "@/components/ui/Footer.vue";
 </script>
 
 <template>
@@ -25,6 +26,8 @@ import InvoiceTable from "@/components/invoice/Table.vue";
       </div>
 
       <InvoiceTable />
+
+      <Footer />
     </div>
   </main>
 </template>
