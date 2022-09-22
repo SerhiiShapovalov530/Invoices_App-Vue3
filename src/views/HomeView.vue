@@ -3,7 +3,7 @@ import InvoiceTable from "@/components/invoice/Table.vue";
 </script>
 
 <template>
-  <main class="flex justify-center w-screen ">
+  <main class="flex justify-center w-screen overflow-y-auto">
     <div class="w-6/12 flex flex-col">
       <div class="flex justify-between mt-20 mb-14">
         <div>
