@@ -20,7 +20,7 @@ const toggleSlideOver = ()  => showSlideOver.value = !showSlideOver.value
 // fetchData(`http://localhost:3000/invoices`)
 
 const filterByStatus = (event) => {
-  router.push({ path: '/', query: { status: event.target.value } })
+  router.push({ path: '/', query: { status: event.target.value } }) // ?status=drfat
 }
 
 watch(
