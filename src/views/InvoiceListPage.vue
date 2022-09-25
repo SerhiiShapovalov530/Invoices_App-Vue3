@@ -26,7 +26,7 @@ const filterByStatus = (event) => {
 watch(
   () => route.query.status,
   (status) => {
-    invoicesStore.statusSelected = status
+    invoicesStore.statusSelected = status || ''
   },
   { immediate: true }
 )
@@ -41,7 +41,7 @@ onBeforeMount(async () => {
     <div class="w-6/12 flex flex-col">
       <div class="flex justify-between mt-20 mb-14">
         <div>
-          <h1 class="text-5xl font-semi-bold mb-1 ">Invoices {{ statusSelected }}</h1>
+          <h1 class="text-5xl font-semi-bold mb-1 ">Invoices</h1>
           <small class="text-lg dark:text-gray-400">There are 7 total invoices</small>
         </div>
         <div class="flex items-center gap-8">
