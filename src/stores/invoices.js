@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
 
+const URL = 'http://localhost:3000/invoices'
+
 export const useInvoicesStore = defineStore('invoices', {
   state: () => ({
     isLoading: false,
@@ -15,7 +17,6 @@ export const useInvoicesStore = defineStore('invoices', {
   },
   actions: {
     async fetchAll () {
-      const URL = 'http://localhost:3000/invoices'
       try {
         this.isLoading = true
         const response = await axios.get(URL)
