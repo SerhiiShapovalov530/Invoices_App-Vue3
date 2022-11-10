@@ -1,9 +1,22 @@
+<script setup>
+import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
+
+defineProps({
+  isOpen: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const emit = defineEmits(['onToggleSlideOver'])
+</script>
+
 <template>
   <TransitionRoot as="template" :show="isOpen">
     <Dialog as="div" class="relative z-10" @close="isOpen = false">
       <TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0" enter-to="opacity-100"
         leave="ease-in-out duration-500" leave-from="opacity-100" leave-to="opacity-0">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+        <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" />
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-hidden">
@@ -13,7 +26,7 @@
               enter-from="translate-x-full" enter-to="translate-x-0"
               leave="transform transition ease-in-out duration-500 sm:duration-700" leave-from="translate-x-0"
               leave-to="translate-x-full">
-              <DialogPanel class="pointer-events-auto relative w-screen max-w-md">
+              <DialogPanel class="pointer-events-auto relative w-screen max-w-2xl">
                 <TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0"
                   enter-to="opacity-100" leave="ease-in-out duration-500" leave-from="opacity-100" leave-to="opacity-0">
                   <div class="absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4">
@@ -29,14 +42,18 @@
                     </button>
                   </div>
                 </TransitionChild>
-                <div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-                  <div class="px-4 sm:px-6">
-                    <DialogTitle class="text-lg font-medium text-gray-900">Panel title</DialogTitle>
+                <div class="flex h-full flex-col overflow-y-scroll bg-slate-800 py-6 shadow-xl">
+                  <div class="px-4 sm:px-14">
+                    <DialogTitle class="text-2xl font-bold text-white mt-6">
+                      <slot name="header">Default Title</slot>
+                    </DialogTitle>
                   </div>
-                  <div class="relative mt-6 flex-1 px-4 sm:px-6">
+                  <div class="relative mt-12 flex-1 px-4 sm:px-6 text-white">
                     <!-- Replace with your content -->
-                    <div class="absolute inset-0 px-4 sm:px-6">
-                      <div class="h-full border-2 border-dashed border-gray-200" aria-hidden="true" />
+                    <div class="absolute inset-0 px-4 sm:px-14">
+                      <div class="h-full" aria-hidden="true">
+                        <slot name="content">Default content</slot>
+                      </div>
                     </div>
                     <!-- /End replace -->
                   </div>
@@ -49,17 +66,3 @@
     </Dialog>
   </TransitionRoot>
 </template>
-  
-<script setup>
-import { ref } from 'vue'
-import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-
-defineProps({
-  isOpen: {
-    type: Boolean,
-    default: false
-  }
-})
-
-const emit = defineEmits(['onToggleSlideOver'])
-</script>

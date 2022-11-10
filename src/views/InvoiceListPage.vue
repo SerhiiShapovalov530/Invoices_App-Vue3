@@ -7,11 +7,15 @@ import SlideOver from "../components/ui/SlideOver.vue";
 import { useInvoicesStore } from "@/stores/invoices"
 import { useRouter, useRoute } from "vue-router";
 
+import BaseInput from "../components/ui/BaseInput.vue";
+
 const router = useRouter()
 const route = useRoute()
 const invoicesStore = useInvoicesStore()
 
 const showSlideOver = ref(false)
+
+const msg = ref('')
 
 const toggleSlideOver = ()  => showSlideOver.value = !showSlideOver.value
 
@@ -61,7 +65,93 @@ onBeforeMount(async () => {
       <InvoiceTable />
 
       <teleport to="#teleport-root">
-        <SlideOver :is-open="showSlideOver" @onToggleSlideOver="toggleSlideOver" />
+        <SlideOver :is-open="showSlideOver" @onToggleSlideOver="toggleSlideOver">
+          <template #header>New #XM9141</template>
+          <template #content>
+            <div class="text-sm font-semibold mb-3 text-purple-500">Bill From</div>
+
+            <div class="grid grid-cols-6 gap-4">
+              <div class="col-span-9">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="Street Address" />
+              </div>
+              <div class="col-span-9 sm:col-span-3">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="City" />
+              </div>
+              <div class="col-span-9 sm:col-span-3">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="Post Code" />
+              </div>
+              <div class="col-span-9 sm:col-span-3">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="Country" />
+              </div>
+            </div>
+
+            <div class="text-sm font-semibold mb-3 text-purple-500 mt-10">Bill To</div>
+
+            <div class="grid grid-cols-9 gap-4">
+              <div class="col-span-9">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="Client's Name" />
+              </div>
+              <div class="col-span-9">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="Client's Email" />
+              </div>
+              <div class="col-span-9">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="Street Address" />
+              </div>
+              <div class="col-span-9 sm:col-span-3">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="City" />
+              </div>
+              <div class="col-span-9 sm:col-span-3">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="Post Code" />
+              </div>
+              <div class="col-span-9 sm:col-span-3">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="Country" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-6 gap-4 mt-8">
+              <div class="col-span-6 sm:col-span-3">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="Invoice Date" />
+              </div>
+              <div class="col-span-6 sm:col-span-3">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="Payment Terms" />
+              </div>
+              <div class="col-span-6">
+                <BaseInput type="text" class="text-zinc-900" v-model="msg" label="Project Description" />
+              </div>
+            </div>
+
+            <div class="text-xl font-semibold mb-3 text-purple-200 mt-10">Item List</div>
+
+            <table class="border-collapse w-full border border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-800 text-sm shadow-sm">
+              <thead>
+                <tr class="bg-slate-50 dark:bg-slate-700">
+                  <th class="border border-slate-600">Item Name</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Banner Design</td>
+                  <td>1</td>
+                  <td>156.00</td>
+                  <td>156.01</td>
+                  <td>DEL</td>
+                </tr>
+                <tr>
+                  <td>Banner Design</td>
+                  <td>1</td>
+                  <td>156.00</td>
+                  <td>156.01</td>
+                  <td>DEL</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </template>
+        </SlideOver>
       </teleport>
       <Footer />
     </div>
