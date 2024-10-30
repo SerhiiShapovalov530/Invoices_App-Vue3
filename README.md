@@ -1,6 +1,7 @@
 # Invoice-app-vue3
 
-**Frontendmentor challenge:** https://www.frontendmentor.io/challenges/invoice-app-i7KaLTQjl
+Experience it in action! Check out the <a href="https://www.frontendmentor.io" target="_blank">Visit Website</a>.
+
 ## Project Setup
 
 ```sh
@@ -14,4 +15,3 @@ npm run dev
 
 npm run api
 ```
-
